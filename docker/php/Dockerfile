@@ -23,4 +23,12 @@ WORKDIR /var/www
 # Copy custom php.ini
 COPY php.ini /usr/local/etc/php/
 
+
+# Install Bun versi spesifik
+ENV BUN_VERSION="bun-v1.3.1"
+RUN curl -fsSL https://bun.sh/install | bash -s -- $BUN_VERSION
+
+ENV BUN_INSTALL="/root/.bun"
+ENV PATH="$BUN_INSTALL/bin:$PATH"
+
 EXPOSE 9000
